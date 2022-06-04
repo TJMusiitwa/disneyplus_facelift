@@ -34,6 +34,7 @@ class EverythingPage extends StatelessWidget {
               stretchModes: const [StretchMode.blurBackground],
               centerTitle: false,
               title: const Text('Everything'),
+              titlePadding: const EdgeInsets.only(left: 10, bottom: 20),
             ),
           ),
         ],

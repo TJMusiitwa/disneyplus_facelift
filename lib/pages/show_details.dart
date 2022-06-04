@@ -72,8 +72,121 @@ class ShowDetails extends StatelessWidget {
                     ),
                     const Positioned(
                         top: kToolbarHeight, right: 10, child: CloseButton()),
+                    Positioned(
+                      right: 10,
+                      bottom: 20,
+                      child: IconButton(
+                        icon: const Icon(Icons.more_horiz_outlined),
+                        onPressed: () {
+                          showModalBottomSheet(
+                            context: context,
+                            shape: const RoundedRectangleBorder(
+                              borderRadius: BorderRadius.only(
+                                topLeft: Radius.circular(30),
+                                topRight: Radius.circular(30),
+                              ),
+                            ),
+                            barrierColor: Colors.black87,
+                            builder: (_) {
+                              return BottomSheet(
+                                  onClosing: (() => print('closing')),
+                                  shape: const RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.only(
+                                      topLeft: Radius.circular(30),
+                                      topRight: Radius.circular(30),
+                                    ),
+                                  ),
+                                  builder: (_) {
+                                    return ClipRRect(
+                                      borderRadius: const BorderRadius.only(
+                                        topLeft: Radius.circular(30),
+                                        topRight: Radius.circular(30),
+                                      ),
+                                      child: Container(
+                                        height:
+                                            MediaQuery.of(context).size.height *
+                                                0.5,
+                                        padding: const EdgeInsets.all(15),
+                                        child: Column(
+                                          children: [
+                                            Row(
+                                              children: [
+                                                const Spacer(),
+                                                Center(
+                                                    child: Text(
+                                                        snapshot.data!.name)),
+                                                const Spacer(),
+                                                Align(
+                                                  alignment: Alignment.topRight,
+                                                  child: IconButton(
+                                                      onPressed: () {
+                                                        Navigator.pop(context);
+                                                      },
+                                                      icon: const Icon(
+                                                          Icons.close_rounded)),
+                                                )
+                                              ],
+                                            ),
+                                            ListTile(
+                                              leading: const Icon(
+                                                  Icons.arrow_downward),
+                                              title: const Text('Download'),
+                                              onTap: () {
+                                                Navigator.pop(context);
+                                              },
+                                            ),
+                                            ListTile(
+                                              leading: const Icon(
+                                                  Icons.share_outlined),
+                                              title: const Text('Share'),
+                                              onTap: () {
+                                                Navigator.pop(context);
+                                              },
+                                            ),
+                                            ListTile(
+                                              leading: const Icon(Icons.search),
+                                              title:
+                                                  const Text('More like this'),
+                                              onTap: () {
+                                                Navigator.pop(context);
+                                              },
+                                            ),
+                                            ListTile(
+                                              leading: const Icon(Icons.cast),
+                                              title: const Text('Cast on TV'),
+                                              onTap: () {
+                                                Navigator.pop(context);
+                                              },
+                                            ),
+                                            const Spacer(),
+                                            Row(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment
+                                                      .spaceBetween,
+                                              children: [
+                                                IconButton(
+                                                    onPressed: () {},
+                                                    icon: const Icon(
+                                                        Icons.favorite_border)),
+                                                IconButton(
+                                                    onPressed: () {},
+                                                    icon: const Icon(
+                                                        Icons.thumb_down)),
+                                              ],
+                                            )
+                                          ],
+                                        ),
+                                      ),
+                                    );
+                                  });
+                            },
+                          );
+                        },
+                      ),
+                    )
                   ],
                 ),
+
                 Padding(
                   padding: const EdgeInsets.all(15.0),
                   child: Center(
